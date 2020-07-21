@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_204757) do
+ActiveRecord::Schema.define(version: 2020_07_20_202621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_07_17_204757) do
     t.integer "child_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["child_id", "parent_id"], name: "index_relationships_on_child_id_and_parent_id", unique: true
   end
 
   create_table "tasks", force: :cascade do |t|
