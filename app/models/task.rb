@@ -9,12 +9,16 @@ class Task < ApplicationRecord
 
   def related_to?(task)
     if self == task
-      return true
+      return "is self"
     end
 
-    if self.children.find(task.id) || self.parents.find(task.id)
-      return true
-    end  
+    if self.children.include?(task)
+      return "is parent of"
+    end
+
+    if self.parents.include?(task)
+      return "is child of"
+    end
 
     false
   end
